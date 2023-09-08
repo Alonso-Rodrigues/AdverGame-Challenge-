@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    test
+    <h1>Adver Game</h1>
 </body>
 </html>
