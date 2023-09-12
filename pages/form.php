@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ':phone' => $phone
             ])) {
                 echo "Enregistrement réussi.";
-                header("Location: home.html");
+                header("Location: game.html");
             } else {
                 echo "Erreur lors de l'enregistrement.";
             } 
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <main>
         <section>
             <div class="container">
-                <h3>Remplissez le formulaire por jouer</h3>
+                <h3>Remplissez le formulaire pour rejouer</h3>
                 <form method="post" action="form.php">
                     <label for="nom">Nom</label>
                     <input type="text" name="nom">

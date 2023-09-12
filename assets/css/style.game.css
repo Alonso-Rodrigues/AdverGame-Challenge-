@@ -16,6 +16,14 @@
     overflow: hidden;
 }
 
+.score{
+    position: absolute;
+    top: 400px;
+    /* left: 0; */
+    margin-left: 150px;
+    font-size: x-large;
+    border: black solid;
+}
 .obstacle {
     position: absolute;
     bottom: -6px;

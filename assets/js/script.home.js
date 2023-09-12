@@ -1,5 +1,6 @@
 const player = document.querySelector('.player');
-const obstable = document.querySelector('.obstacle');
+const obstacle = document.querySelector('.obstacle');
+const score = document.querySelector('.score');
 
 const jump = () => {
 
@@ -11,32 +12,31 @@ const jump = () => {
 }
 
 let life = 2;
-let gameEnded = false;
-const loop = setInterval(() => {
-    const obstablePosition = obstable.offsetLeft;
+const restartGame = () => {
+    obstacle.style.left = '-200px';
+}
+const loop = setInterval(()=>{
+    const obstaclePosition = obstacle.offsetLeft;
     const playerPosition = +window.getComputedStyle(player).bottom.replace('px', '');
-    console.log(playerPosition);
 
-    if (obstablePosition <= 50 && obstablePosition > 0 && playerPosition < 137) {
+    if(obstaclePosition <= 50 && obstaclePosition > 0 && playerPosition < 137){
         life--;
 
-        if (life <= 0) {
-            gameEnded = true;
+        if(life <= 0){
+            restartGame();
+
             clearInterval(loop);
             setTimeout(() => {
                 window.location = "http://advergame/pages/form.php";
             }, 3000); 
-          
-
         } else {
-            obstable.style.animation = 'none';
-            obstable.style.left = `${obstablePosition}px`;
+            obstacle.style.animation = 'none';
+            obstacle.style.left = `${obstaclePosition}px`;
 
             player.style.animation = 'none';
             player.style.bottom = `${playerPosition}px`;
-            player.src = "../assets/img/sad.gif"
+            player.src="../assets/img/sad.gif";
         }
     }
-}, 10)
-
+}, 10);
 document.addEventListener('keydown', jump);
