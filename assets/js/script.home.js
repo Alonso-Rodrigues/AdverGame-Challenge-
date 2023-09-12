@@ -17,13 +17,16 @@ const loop = setInterval(() => {
     const playerPosition = +window.getComputedStyle(player).bottom.replace('px', '');
     console.log(playerPosition);
 
-    if (obstablePosition <= 50 && obstablePosition > 0 && playerPosition < 150) {
+    if (obstablePosition <= 50 && obstablePosition > 0 && playerPosition < 137) {
         life--;
 
         if (life <= 0) {
             gameEnded = true;
             clearInterval(loop);
-            window.location = "http://advergame/pages/form.php";
+            setTimeout(() => {
+                window.location = "http://advergame/pages/form.php";
+            }, 3000); 
+          
 
         } else {
             obstable.style.animation = 'none';

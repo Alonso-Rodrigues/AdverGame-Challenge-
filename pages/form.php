@@ -9,18 +9,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $email = $_POST['email'];
         $phone = $_POST['phone'];
 
-        // Préparer la statement
-        $stmt = $db->prepare("INSERT INTO user (nom, prenom, email, phone) VALUES (:nom, :prenom, :email, :phone)");
-        // Exécuter statement  
-        if($stmt->execute([':nom' => $nom, 
-        ':prenom' => $prenom,
-        ':email' => $email, 
-        ':phone' => $phone
-        ])) {
-            echo "Enregistrement réussi.";
-        } else {
-            echo "Erreur lors de l'enregistrement.";
-        } 
+        $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/'; 
+        if (!preg_match($regex, $_POST['email'])) {
+        echo $email . "Attention, l'email n'est pas valide";
+
+        }else {
+
+
+            // Préparer la statement
+            $stmt = $db->prepare("INSERT INTO user (nom, prenom, email, phone) VALUES (:nom, :prenom, :email, :phone)");
+            // Exécuter statement  
+            if($stmt->execute([':nom' => $nom, 
+            ':prenom' => $prenom,
+            ':email' => $email, 
+            ':phone' => $phone
+            ])) {
+                echo "Enregistrement réussi.";
+                header("Location: home.html");
+            } else {
+                echo "Erreur lors de l'enregistrement.";
+            } 
+        }
 
     } else {
         echo "Veuillez remplir tous les champs du formulaire.";
@@ -43,7 +52,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <header>
         <nav>
             <ul>
-                <li><a href="#">Retour au menu</a></li>
                 <li><a href="#">Quitter le jeu</a></li>
             </ul>
         </nav>
