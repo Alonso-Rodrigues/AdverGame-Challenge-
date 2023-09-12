@@ -44,7 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <nav>
             <ul>
                 <li><a href="#">Retour au menu</a></li>
-              
                 <li><a href="#">Quitter le jeu</a></li>
             </ul>
         </nav>
