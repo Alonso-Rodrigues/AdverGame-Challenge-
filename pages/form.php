@@ -6,26 +6,7 @@
 // // } else {
 // //     var_dump("Erreur de connexion à la base de données !");
 // // }
-// $nom = $_POST['nom'];
-// $prenom = $_POST['prenom'];
-// $email = $_POST['email'];
-// $phone = $_POST['phone'];
 
-// // Préparer la statement
-// $stmt = $db->prepare("INSERT INTO user (nom, prenom, email, phone) VALUES (:nom, :prenom, :email, :phone)");
-
-// // Bind paramètres
-// $stmt->bindParam(':nom', $nom);
-// $stmt->bindParam(':prenom', $prenom);
-// $stmt->bindParam(':email', $email);
-// $stmt->bindParam(':phone', $phone);
-
-// // Exécuter statement
-// if ($stmt->execute()) {
-//     echo "Enregistrement réussi.";
-// } else {
-//     echo "Erreur lors de l'enregistrement.";
-// }
 require_once $_SERVER["DOCUMENT_ROOT"]."../connection/connect.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
