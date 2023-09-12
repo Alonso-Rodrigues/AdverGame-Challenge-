@@ -1,12 +1,4 @@
 <?php
-// require_once $_SERVER["DOCUMENT_ROOT"]."../connection/connect.php";
-// // vérification de la connexion à la base de données:
-// // if($dbname){
-// //     var_dump("Connexion réussie à la base de données");
-// // } else {
-// //     var_dump("Erreur de connexion à la base de données !");
-// // }
-
 require_once $_SERVER["DOCUMENT_ROOT"]."../connection/connect.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -19,23 +11,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Préparer la statement
         $stmt = $db->prepare("INSERT INTO user (nom, prenom, email, phone) VALUES (:nom, :prenom, :email, :phone)");
-
-        // Bind paramètres
-        // ':marquer de substituition'
-        $stmt->bindParam(':nom', $nom);
-        $stmt->bindParam(':prenom', $prenom);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':phone', $phone);
-
-        // Exécuter statement
-        if ($stmt->execute()) {
+        // Exécuter statement  
+        if($stmt->execute([':nom' => $nom, 
+        ':prenom' => $prenom,
+        ':email' => $email, 
+        ':phone' => $phone
+        ])) {
             echo "Enregistrement réussi.";
         } else {
             echo "Erreur lors de l'enregistrement.";
-        }
+        } 
+
     } else {
         echo "Veuillez remplir tous les champs du formulaire.";
-    }
+    }  
 }
 
 ?>
@@ -55,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <nav>
             <ul>
                 <li><a href="#">Retour au menu</a></li>
-                <li><a href="#">Rejouer</a></li>
+              
                 <li><a href="#">Quitter le jeu</a></li>
             </ul>
         </nav>

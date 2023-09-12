@@ -4,30 +4,44 @@
     box-sizing: border-box;
 }
 
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-}
-
 .game-board {
     position: relative;
     display: flex;
-    width: 80%;
-    height: 800px;
-    border: 1px solid #333;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(#87ceeb, #e0f6ff);
+    bottom: 0;
+    border-bottom:  50px solid #33532b;
     margin: 0 auto;
     overflow: hidden;
 }
 
 .obstacle {
     position: absolute;
-    bottom: 1%;
-    width: 200px;
-    animation: obstacle 2s infinite linear;
-    border: black solid;
+    bottom: -6px;
+    width: 150px;
+    height: 150px;
+    transform: rotate(-5deg);
+    animation: obstacle 2.5s infinite linear;
+
+}
+
+.player {
+    position: absolute;
+    bottom: 0;
+    width: 150px;
+    bottom: -10px;
+    border-radius: 50%;
+}
+
+.jump {
+    animation: jump 600ms ease-out;
+}
+
+.clounds {
+    position: absolute;
+    width: 550px;
+    animation: clounds-animation 20s infinite linear;
 }
 
 @keyframes obstacle {
@@ -40,36 +54,35 @@ body {
     }
 }
 
-.player {
-    position: absolute;
-    bottom: 0;
-    width: 200px;
-    bottom: 0;
-    border: solid red;
-}
-
-.jump {
-    animation: jump 500ms infinite ease-in-out;
-}
-
 @keyframes jump {
     0% {
         bottom: 0;
     }
 
     40% {
-        bottom: 150px;
+        bottom: 220px;
     }
 
     50% {
-        bottom: 300px;
+        bottom: 250px;
     }
 
     60% {
-        bottom: 150px;
+        bottom: 200px;
     }
 
     100% {
         bottom: 0;
+    }
+}
+
+@keyframes clounds-animation {
+
+    from {
+        right: -550px;
+    }
+
+    to {
+        right: 100%;
     }
 }
