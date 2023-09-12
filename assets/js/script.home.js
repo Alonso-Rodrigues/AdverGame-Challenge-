@@ -21,11 +21,15 @@ const loop = setInterval(()=>{
 
     if(obstaclePosition <= 50 && obstaclePosition > 0 && playerPosition < 137){
         life--;
-
         if(life <= 0){
             restartGame();
+            
+             setTimeout(() => {
+                window.location = "http://advergame/pages/game.html";
+            }, 3000); 
+            
+            // clearInterval(loop);
 
-            clearInterval(loop);
             setTimeout(() => {
                 window.location = "http://advergame/pages/form.php";
             }, 3000); 
@@ -34,9 +38,11 @@ const loop = setInterval(()=>{
             obstacle.style.left = `${obstaclePosition}px`;
 
             player.style.animation = 'none';
-            player.style.bottom = `${playerPosition}px`;
+            player.style.bottom = `${playerPosition + 10}px`;
             player.src="../assets/img/sad.gif";
         }
     }
 }, 10);
 document.addEventListener('keydown', jump);
+
+

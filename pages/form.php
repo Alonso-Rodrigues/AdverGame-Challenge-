@@ -15,9 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         }else {
 
-
             // Préparer la statement
             $stmt = $db->prepare("INSERT INTO user (nom, prenom, email, phone) VALUES (:nom, :prenom, :email, :phone)");
+            
             // Exécuter statement  
             if($stmt->execute([':nom' => $nom, 
             ':prenom' => $prenom,
