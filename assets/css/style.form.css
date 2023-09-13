@@ -3,8 +3,6 @@
     margin: 0;
 }
 
-
-
 body {
     display: flex;
     flex-direction: column;
@@ -25,6 +23,7 @@ header {
     height: 10%;
     width: 100%;
 }
+
 .message_email{
     font-size: 20px;
     color: white;
