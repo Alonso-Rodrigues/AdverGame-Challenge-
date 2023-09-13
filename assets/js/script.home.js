@@ -1,8 +1,8 @@
 const player = document.querySelector('.player');
 const obstacle = document.querySelector('.obstacle');
 const gameBoard = document.querySelector('.game-board');
-const btn = document.querySelector('.restart')
-
+const btn = document.querySelector('.restart');
+const clounds = document.querySelector('.clounds');
 const jump = () => {
 
     player.classList.add('jump');
@@ -13,13 +13,15 @@ const jump = () => {
 }
 
 let life = 2;
-
 btn.addEventListener('click', () => {
     start();
 })
 
 const endGame = () => {
-
+    clounds.classList.add("hidden");
+    player.classList.add("hidden");
+    obstacle.classList.add("hidden");
+    gameBoard.style.border='0';    
     gameBoard.classList.add('gameOver');
 
     setTimeout(() => {
