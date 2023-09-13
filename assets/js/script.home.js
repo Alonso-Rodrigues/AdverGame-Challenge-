@@ -1,6 +1,7 @@
 const player = document.querySelector('.player');
 const obstacle = document.querySelector('.obstacle');
-const score = document.querySelector('.score');
+const gameBoard = document.querySelector('.game-board');
+const btn = document.querySelector('.restart')
 
 const jump = () => {
 
@@ -12,37 +13,57 @@ const jump = () => {
 }
 
 let life = 2;
-const restartGame = () => {
-    obstacle.style.left = '-200px';
-}
-const loop = setInterval(()=>{
-    const obstaclePosition = obstacle.offsetLeft;
-    const playerPosition = +window.getComputedStyle(player).bottom.replace('px', '');
 
-    if(obstaclePosition <= 50 && obstaclePosition > 0 && playerPosition < 137){
-        life--;
-        if(life <= 0){
-            restartGame();
-            
-             setTimeout(() => {
-                window.location = "http://advergame/pages/game.html";
-            }, 3000); 
-            
-            // clearInterval(loop);
+btn.addEventListener('click', () => {
+    start();
+})
+
+const endGame = () => {
+
+    gameBoard.classList.add('gameOver');
+
+    setTimeout(() => {
+        window.location = "http://advergame/pages/form.php";
+    }, 3000);
+}
+
+function start() {
+
+    document.addEventListener('keydown', jump);
+
+    obstacle.classList.remove("obstacle");
+    obstacle.classList.add("obstacle");
+    obstacle.classList.remove("hidden");
+
+    player.src = "../assets/img/player.gif";
+    btn.classList.add("hidden");
+
+    const loop = setInterval(() => {
+        const obstaclePosition = obstacle.offsetLeft;
+        const playerPosition = +window.getComputedStyle(player).bottom.replace('px', '');
+
+        if (obstaclePosition <= 50 && obstaclePosition > 0 && playerPosition < 137) {
+            life--;
 
             setTimeout(() => {
-                window.location = "http://advergame/pages/form.php";
-            }, 3000); 
-        } else {
-            obstacle.style.animation = 'none';
-            obstacle.style.left = `${obstaclePosition}px`;
+                obstacle.classList.add("hidden");
+            }, 500);
 
-            player.style.animation = 'none';
-            player.style.bottom = `${playerPosition + 10}px`;
-            player.src="../assets/img/sad.gif";
+            clearInterval(loop);
+            document.removeEventListener('keydown', jump);
+
+            //player.style.animation = 'none';
+            // player.style.bottom = `${playerPosition + 10}px`;
+            player.src = "../assets/img/sad.gif";
+
+            if (life <= 0) {
+                endGame();
+            } else {
+                btn.classList.remove("hidden");
+            }
         }
-    }
-}, 10);
-document.addEventListener('keydown', jump);
+    }, 10);
+}
 
+start();
 
