@@ -23,7 +23,7 @@ const endGame = () => {
     gameBoard.classList.add('gameOver');
 
     setTimeout(() => {
-        window.location = "http://advergame/pages/form.php";
+        window.location = "http://rugby/pages/form.php";
     }, 3000);
 }
 

@@ -1,6 +1,8 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"]."../connection/connect.php";
 
+session_start();
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Verifique se os campos do formulário foram definidos antes de acessá-los
     if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['phone'])) {
@@ -11,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/'; 
         if (!preg_match($regex, $_POST['email'])) {
-        echo $email . "Attention, l'email n'est pas valide";
+        echo $email . " <p class='message_email'> Veuillez remplisez tout les champs </p>"  ;
 
         }else {
 
@@ -24,7 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ':email' => $email, 
             ':phone' => $phone
             ])) {
-                echo "Enregistrement réussi.";
+
+                $_SESSION['success'] = "Vous etez bien inscrit";
+              
                 header("Location: game.html");
             } else {
                 echo "Erreur lors de l'enregistrement.";
@@ -32,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
     } else {
-        echo "Veuillez remplir tous les champs du formulaire.";
+       $_SESSION['failure'] = "Erreur lors d'inscription";
     }  
 }
 
@@ -58,6 +62,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </header>
     <main>
         <section>
+            <?php
+            // if(isset($_SESSION['success'])){
+            //     echo $_SESSION['success'];
+            // }else{
+            //     echo $_SESSION['failure'];
+            // }
+            ?>
             <div class="container">
                 <h3>Remplissez le formulaire pour rejouer</h3>
                 <form method="post" action="form.php">
