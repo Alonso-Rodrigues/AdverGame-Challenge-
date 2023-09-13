@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/'; 
         if (!preg_match($regex, $_POST['email'])) {
-        echo $email . " <p class='message_email'> Veuillez remplisez tout les champs </p>"  ;
+        echo  " <p class='message_email'> Veuillez remplisez tout les champs </p>"  ;
 
         }else {
 
