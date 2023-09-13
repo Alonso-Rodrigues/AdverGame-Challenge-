@@ -46,6 +46,7 @@ function start() {
             life--;
 
             setTimeout(() => {
+
                 obstacle.classList.add("hidden");
             }, 500);
 
@@ -53,7 +54,7 @@ function start() {
             document.removeEventListener('keydown', jump);
 
             //player.style.animation = 'none';
-            // player.style.bottom = `${playerPosition + 10}px`;
+            //player.style.bottom = `${playerPosition + 10}px`;
             player.src = "../assets/img/sad.gif";
 
             if (life <= 0) {

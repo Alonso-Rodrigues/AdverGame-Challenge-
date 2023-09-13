@@ -16,16 +16,6 @@
     overflow: hidden;
 }
 
-/* .score {
-    position: absolute;
-    top: 300px;
-    height: 100px;
-    width: 100px;
-    left: 0;
-    margin-left: 150px;
-    font-size: x-large;
-    border: black solid;
-} */
 .restart {
     position: absolute;
     display: flex;
@@ -62,12 +52,14 @@
 
 .player {
     position: absolute;
-    bottom: 0;
+    bottom: 0px;
     width: 150px;
     bottom: -10px;
     border-radius: 50%;
 }
-
+.sad{
+    bottom: 10px;
+}
 .jump {
     animation: jump 600ms ease-out;
 }
@@ -83,9 +75,9 @@
     background-color: #1c1d1c;
     background-image: url(../img/gameOver.gif);
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
     background-position: center;
-    z-index: 7;
+    z-index: 1000;
 }
 
 @keyframes obstacle {
