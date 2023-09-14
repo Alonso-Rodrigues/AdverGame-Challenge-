@@ -1,7 +1,7 @@
 const player = document.querySelector('.player');
 const obstacle = document.querySelector('.obstacle');
 const gameBoard = document.querySelector('.game-board');
-const btn = document.querySelector('.restart')
+const btn = document.querySelector('.restart');
 const clounds = document.querySelector('.clounds');
 const jump = () => {
 
@@ -13,19 +13,19 @@ const jump = () => {
 }
 
 let life = 2;
-tener('click', () => {
+btn.addEventListener('click', () => {
     start();
 })
 
 const endGame = () => {
+    clounds.classList.add("hidden");
+    player.classList.add("hidden");
+    obstacle.classList.add("hidden");
+    gameBoard.style.border='0';    
     gameBoard.classList.add('gameOver');
+
     setTimeout(() => {
-        window.location = "/pages/form.php";
-        clounds.classList.add("hidden");
-        player.classList.add("hidden");
-        obstacle.classList.add("hidden");
-        gameBoard.style.border='0';    
-        gameBoard.classList.add('gameOver');
+        window.location = "http://rugby/pages/form.php";
     }, 3000);
 }
 
@@ -69,4 +69,7 @@ function start() {
 }
 
 start();
+
+
+
 

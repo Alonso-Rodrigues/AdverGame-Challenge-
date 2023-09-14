@@ -1,41 +1,37 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"]."../connection/connect.php";
+session_start(); // Démarrer la session au début du script
 
-session_start();
+require_once $_SERVER["DOCUMENT_ROOT"] . "../connection/connect.php";
+
+// Vérifier si la session de succès n'est pas définie, rediriger vers le formulaire
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Verifique se os campos do formulário foram definidos antes de acessá-los
+    // Vérifiez si les champs du formulaire ont été définis avant de les accéder
     if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['phone'])) {
-        $nom = $_POST['nom'];
-        $prenom = $_POST['prenom'];
-        $email = $_POST['email'];
-        $phone = $_POST['phone'];
+        $nom = htmlspecialchars($_POST['nom']);
+        $prenom = htmlspecialchars($_POST['prenom']);
+        $email = htmlspecialchars($_POST['email']);
+        $phone = htmlspecialchars($_POST['phone']);
 
-        $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/'; 
-        if (!preg_match($regex, $_POST['email'])) {
-          echo $email . "Attention, l'email n'est pas valide";
-        }else {
+        // Préparer la statement
+        $stmt = $db->prepare("INSERT INTO user (nom, prenom, email, phone) VALUES (:nom, :prenom, :email, :phone)");
 
-            // Préparer la statement
-            $stmt = $db->prepare("INSERT INTO user (nom, prenom, email, phone) VALUES (:nom, :prenom, :email, :phone)");
-            
-            // Exécuter statement  
-            if($stmt->execute([':nom' => $nom, 
+        // Exécuter statement  
+        if ($stmt->execute([':nom' => $nom,
             ':prenom' => $prenom,
-            ':email' => $email, 
+            ':email' => $email,
             ':phone' => $phone
-            ])) {
+        ])) {
+            $_SESSION['success'] = "Félicitations pour votre inscription"; // Message de succès
+            
 
-                $_SESSION['success'] = "Vous etez bien inscrit";
-                header("Location: game.html");
-            } else {
-                echo "Erreur lors de l'enregistrement.";
-            } 
+      
+        } else {
+            $_SESSION['failure'] = "Erreur lors de l'inscription";
         }
-
-    } else {
-       $_SESSION['failure'] = "Erreur lors d'inscription";
-    }  
+    }
 }
+
 
 ?>
 
@@ -46,40 +42,56 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.form.css">
+    <style>
+        ul{
+            display:flex;
+            flex-direction:column;
+        }
+    </style>
     <title>Form Adver Game</title>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Quitter le jeu</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <nav>
+        <ul>
+            <?php
+                // Vérifiez si l'utilisateur est connecté (c'est-à-dire si $_SESSION['success'] est défini)
+                if (isset($_SESSION['success']) && !empty($_SESSION['success'])) {
+                    echo '<li><a href="game.html">Rejouer</a></li>';
+                } else {
+                    echo '<li><a href="#" id="rejouer-link">Rejouer</a></li>';
+                    echo '<h1 id="message" style="display: none;">Veuillez remplir le formulaire pour jouer à nouveau.</h1>';
+
+                }
+            ?>
+        </ul>
+    </nav>
+</header>
     <main>
         <section>
 
-            <?php
-            // if(isset($_SESSION['success'])){
-            //     echo $_SESSION['success'];
-            // }else{
-            //     echo $_SESSION['failure'];
-            // }
-            ?>
+        <?php
+            // Vérifiez si $_SESSION['success'] est défini et non vide
+            if (isset($_SESSION['success']) && !empty($_SESSION['success'])) {
+                echo '<div class="success-message">' . $_SESSION['success'] . '</div>';
+                unset( $_SESSION['success']);
+            }
+        ?>
+
 
             <div class="container">
-                <h3>Remplissez le formulaire pour rejouer</h3>
+              
                 <form method="post" action="form.php">
                     <label for="nom">Nom</label>
-                    <input type="text" name="nom">
+                    <input type="text" name="nom" required>
                     <label for="prenom">Prénom</label>
-                    <input type="text" name="prenom">
+                    <input type="text" name="prenom" required>
                     <label for="email">Email</label>
-                    <input type="text" name="email">
+                    <input type="email" name="email" required>
                     <label for="phone">Phone</label>
-                    <input type="text" name="phone">
-                    <button type="submit">Rejouer</button>
+                    <input type="text" name="phone" required>
+                    <button type="submit">Inscrivez</button>
                 </form>
             </div>
         </section>
@@ -87,6 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <footer>
         All rights reserved to Alonso Rodrigues and Kostandin Fakaj
     </footer>
+    <script src="../assets/js/message.js"></script>
 </body>
 
 </html>
