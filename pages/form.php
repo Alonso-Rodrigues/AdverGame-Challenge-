@@ -21,17 +21,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ':prenom' => $prenom,
             ':email' => $email,
             ':phone' => $phone
-        ])) {
+        ])) 
+        {
             $_SESSION['success'] = "Félicitations pour votre inscription"; // Message de succès
-            
 
-      
+            // Récupérer l'ID de l'utilisateur inscrit
+            $lastInsertedID = $db->lastInsertId();
+
+            // Sélectionner le prénom de l'utilisateur inscrit
+            $selectStmt = $db->prepare("SELECT prenom FROM user WHERE id_user = :id");
+            $selectStmt->execute([':id' => $lastInsertedID]);
+            $row = $selectStmt->fetch();
+           
+
+            // Afficher le prénom de l'utilisateur inscrit
+            if ($row) {
+                $prenomDernierUtilisateur = $row['prenom'];
+                echo "Le prénom du dernier utilisateur inscrit est : $prenomDernierUtilisateur";
+            }
         } else {
             $_SESSION['failure'] = "Erreur lors de l'inscription";
         }
     }
 }
-
 
 ?>
 
@@ -65,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <?php
                 // Vérifiez si l'utilisateur est connecté (c'est-à-dire si $_SESSION['success'] est défini)
                 if (isset($_SESSION['success']) && !empty($_SESSION['success'])) {
-                    echo '<li><a href="game.html">Rejouer</a></li>';
+                    echo '<li><a href="game_user.php">Rejouer</a></li>';
                 } else {
                     echo '<li><a href="#" id="rejouer-link">Rejouer</a></li>';
                     echo '<h1 id="message" style="display: none;">Veuillez remplir le formulaire pour jouer à nouveau.</h1>';
