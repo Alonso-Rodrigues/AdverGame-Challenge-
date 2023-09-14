@@ -47,6 +47,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             display:flex;
             flex-direction:column;
         }
+        #message{
+            color:white;
+        }
+        .success-message{
+            color:#599cc8;
+            font-size:25px;
+        }
     </style>
     <title>Form Adver Game</title>
 </head>
