@@ -103,7 +103,9 @@ function start() {
 
       // Si la 'life' est égale ou inférieure à zéro, endgame(). Sinon je recommence la boucle
       if (life <= 0) {
-        endGame();
+        setTimeout(()=>{
+          endGame();
+        }, 3000)
       } else {
         btn.classList.remove("hidden");
       }
