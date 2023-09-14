@@ -3,6 +3,8 @@ const obstacle = document.querySelector('.obstacle');
 const gameBoard = document.querySelector('.game-board');
 const clounds = document.querySelector('.clounds');
 const btn = document.querySelector('.restart')
+const score = document.querySelector('.score');
+let count = 0;
 //Const pour faire sauter le 'player'
 const jump = () => {
     player.classList.add('jump');
@@ -52,8 +54,10 @@ function start() {
         const playerPosition = +window.getComputedStyle(player).bottom.replace('px', '');
         // Condition pour trouver la position du 'obstacle' et du 'player' après avoir sauté le 'obstacle'
         if (obstaclePosition <= 90 && obstaclePosition > 0 && playerPosition < 150) {
+            alert(`Game Over! Score: ${count}`);
+            count = 0;
+                      
             life--;
-
             setTimeout(() => {
 
                 obstacle.classList.add("hidden");
@@ -61,6 +65,8 @@ function start() {
             }, 500);
             clearInterval(loop);
             document.removeEventListener('keydown', jump);
+
+
 
             // obstacle.style.animation = 'none';
             // obstacle.style.left = `${obstaclePosition}px`;
@@ -74,7 +80,9 @@ function start() {
 
                 btn.classList.remove("hidden");
             }
-        } 
+        }
+        count++
+        score.innerHTML = `SCORE: ${count}`;
     }, 10)
 }
 
