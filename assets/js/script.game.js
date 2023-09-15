@@ -6,6 +6,7 @@ const clounds = document.querySelector(".clounds");
 const btn = document.querySelector(".restart");
 const score = document.querySelector(".score");
 const lifeCounter = document.querySelector(".lifeCounter");
+const timming = document.querySelector(".timming");
 
 //Const pour faire sauter le 'player'
 const jump = () => {
@@ -53,6 +54,20 @@ function decreaseLife() {
 
 //Function pour commencer le jeu
 function start() {
+
+  function countDown(){
+    if(time > 0){
+      timming.innerHTML = time;
+      time-1;
+    } 
+    else{
+      setTimeout(() => {
+        countDown();
+      }, 1000);
+    }
+  }
+ 
+
   // Je déclenche la constant 'jump' en appuyant sur une touche
   document.addEventListener("keydown", jump);
 
@@ -70,6 +85,7 @@ function start() {
 
   // Constant 'loop' du intervale du jeu à la colison
   const loop = setInterval(() => {
+
     // J'appelle la fonction 'life', en la mettant à jour à chaque fois
     updateLife();
 
@@ -113,3 +129,4 @@ function start() {
   }, 10);
 }
 start();
+ time--;
