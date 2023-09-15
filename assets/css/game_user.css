@@ -1,0 +1,18 @@
+.player_name{
+    color:black;
+    font-size:35px;
+}
+.game-board div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   
+    height: 100px;
+    width: 285px;
+    align-items: center;
+    
+}
+.title{
+    font-size: 35px;
+    color: black;
+}

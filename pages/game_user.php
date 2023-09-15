@@ -1,6 +1,6 @@
 <?php
 
-// require_once $_SERVER["DOCUMENT_ROOT"] . "../pages/form.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +10,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.game.css">
+    <link rel="stylesheet" href="../assets/css/game_user.css">
+    <style>
+    
+    </style>
     <title>Game Adver-Chanllege</title>
 </head>
 
@@ -17,7 +21,12 @@
    
 
     <div class="game-board">
-        <span class="score"><?php echo $prenomDernierUtilisateur['prenom'] ?></span>
+        <div>
+            <p class="title">
+                Player Name : 
+            </p>
+            <span class="player_name"><?php echo $_SESSION['prenomDernierUtilisateur']; ?></span>
+        </div>
        
         <button class="restart hidden">Rafraîchir</button>
         <img class="clounds" src="../assets/img/clouds.png" alt="clounds">
