@@ -52,22 +52,20 @@ function decreaseLife() {
   updateLife();
 }
 
+
+ function countdown(time) {
+   if (time >= 0) {
+     setTimeout(() => {
+      time.classList.add(".timming");
+       console.log(time);
+       countdown(time - 1);
+     }, 1000);
+   }
+ }
+ countdown(3);
+
 //Function pour commencer le jeu
 function start() {
-
-  function countDown(){
-    if(time > 0){
-      timming.innerHTML = time;
-      time-1;
-    } 
-    else{
-      setTimeout(() => {
-        countDown();
-      }, 1000);
-    }
-  }
- 
-
   // Je déclenche la constant 'jump' en appuyant sur une touche
   document.addEventListener("keydown", jump);
 
@@ -85,7 +83,6 @@ function start() {
 
   // Constant 'loop' du intervale du jeu à la colison
   const loop = setInterval(() => {
-
     // J'appelle la fonction 'life', en la mettant à jour à chaque fois
     updateLife();
 
@@ -119,9 +116,9 @@ function start() {
 
       // Si la 'life' est égale ou inférieure à zéro, endgame(). Sinon je recommence la boucle
       if (life <= 0) {
-        setTimeout(()=>{
+        setTimeout(() => {
           endGame();
-        }, 3000)
+        }, 3000);
       } else {
         btn.classList.remove("hidden");
       }
@@ -129,4 +126,3 @@ function start() {
   }, 10);
 }
 start();
- time--;
