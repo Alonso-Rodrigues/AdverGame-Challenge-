@@ -71,6 +71,7 @@ function start() {
   player.src = "../assets/img/player.gif";
   btnRestart.classList.add("hidden");
   score.classList.add("score");
+  player.style.bottom = "";
 
   setTimeout(() => {
     timming.classList.add("hidden");
@@ -99,6 +100,7 @@ function start() {
 
       document.removeEventListener("keydown", jump);
       player.src = "../assets/img/sad.gif";
+      player.style.bottom = "1px";
       if (life <= 0) {
         setTimeout(() => {
           endGame();
