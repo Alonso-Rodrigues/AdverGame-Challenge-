@@ -3,6 +3,9 @@ const obstacle = document.querySelector('.obstacle');
 const gameBoard = document.querySelector('.game-board');
 const btn = document.querySelector('.restart');
 const clounds = document.querySelector('.clounds');
+
+
+
 const jump = () => {
 
     player.classList.add('jump');
@@ -29,7 +32,40 @@ const endGame = () => {
     }, 3000);
 }
 
-function start() {
+
+function startCountdown() {
+    const countdownElement = document.getElementById("countdown");
+    let countdown = 3; // Compte à rebours de 3 secondes
+
+    const countdownInterval = setInterval(() => {
+        if (countdown === 0) {
+            countdownElement.textContent = "GO!";
+            clearInterval(countdownInterval); // Arrête le compte à rebours
+
+            // Déclenche le jeu après "GO!"
+            setTimeout(() => {
+                countdownElement.textContent = ""; // Efface le texte
+                startGame();
+            }, 1000); // Attendez 1 seconde après "GO!" avant de commencer le jeu
+        } else {
+            countdownElement.textContent = countdown.toString();
+            countdown--;
+        }
+    }, 1000); // Met à jour le compteur toutes les 1000 millisecondes (1 seconde)
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    startCountdown(); // Commence le compte à rebours dès que la page est chargée
+});
+
+btn.addEventListener('click', () => {
+    startCountdown(); // Au lieu de startGame()
+});
+
+
+
+
+function startGame() {
 
     document.addEventListener('keydown', jump);
 
@@ -68,7 +104,6 @@ function start() {
     }, 10);
 }
 
-start();
 
 
 
