@@ -158,10 +158,9 @@ body {
     position: absolute;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
+    align-items: center; /* Aligner verticalement le texte */
     min-height: 50px;
-    min-width: 290px;
+    min-width: 250px;
     padding: 10px;
     top: 50px;
     left: -10px;
@@ -174,7 +173,20 @@ body {
     font-weight: 600;
     margin: 50px;
     z-index: 999;
+    overflow: hidden; /* Masquer le contenu qui dépasse */
+    white-space: nowrap; /* Empêcher le texte de passer à la ligne */
 }
+
+.nameUser p:nth-child(2) {
+    flex: 1; /* Permet au nom de prendre autant d'espace que possible */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Afficher "..." pour les noms trop longs */
+    white-space: nowrap;
+}
+.label{
+    margin-right: 5px;
+}
+
 
 .hidden {
     display: none;

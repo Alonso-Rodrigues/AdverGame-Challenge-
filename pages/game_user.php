@@ -17,7 +17,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
 <body>
     <main class="game-board">
         <div class="nameUser hidden">
-            <p>
+            <p class="label">
                 Player Name : 
             </p>
             <p>
