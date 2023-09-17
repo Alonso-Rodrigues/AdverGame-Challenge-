@@ -7,6 +7,7 @@ const btnRestart = document.querySelector(".restart");
 const score = document.querySelector(".score");
 const lifeCounter = document.querySelector(".lifeCounter");
 const timming = document.querySelector(".timming");
+const nameUser = document.querySelector(".nameUser");
 const jump = () => {
   player.classList.add("jump");
 
@@ -50,6 +51,7 @@ function countdown(time) {
     lifeCounter.classList.add("hidden");
     score.classList.add("hidden");
     obstacle.classList.add("hidden");
+    nameUser.classList.add("hidden");
     setTimeout(() => {
       timming.textContent = time;
       countdown(time - 1);
@@ -61,7 +63,7 @@ function countdown(time) {
     }, 1000);
   }
 }
-countdown(3);
+countdown(1);
 
 function start() {
   updateLife(); //life counter
@@ -77,6 +79,7 @@ function start() {
     timming.classList.add("hidden");
     lifeCounter.classList.remove("hidden");
     score.classList.remove("hidden");
+    nameUser.classList.remove("hidden");
   }, 1000);
   setTimeout(() => {
     obstacle.classList.remove("hidden");
