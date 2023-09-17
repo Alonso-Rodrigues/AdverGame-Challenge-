@@ -25,6 +25,7 @@ const endGame = () => {
   lifeCounter.classList.add("hidden");
   gameBoard.style.border = "0";
   score;
+  nameUser.classList.add("hidden");
   setTimeout(() => {
     window.location = "http://advergame/pages/form.php";
   }, 5000);
@@ -85,15 +86,18 @@ function start() {
     obstacle.classList.remove("hidden");
   }, 2000);
 
-
   const loop = setInterval(() => {
     count++;
     score.innerHTML = `Score: ${count}`;
     const obstaclePosition = obstacle.offsetLeft;
     const playerPosition = +window
-    .getComputedStyle(player)
-    .bottom.replace("px", "");
-    if (obstaclePosition <= 90 && obstaclePosition > 0 && playerPosition < 150) {
+      .getComputedStyle(player)
+      .bottom.replace("px", "");
+    if (
+      obstaclePosition <= 90 &&
+      obstaclePosition > 0 &&
+      playerPosition < 150
+    ) {
       decreaseLife();
 
       setTimeout(() => {

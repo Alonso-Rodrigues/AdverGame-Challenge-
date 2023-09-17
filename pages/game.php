@@ -1,3 +1,6 @@
+<?php
+require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +13,14 @@
 
 <body>
     <main class="game-board">
-        <div class="nameUser">Alonso</div>
+        <div class="nameUser"> 
+            <?php if (isset($_SESSION['prenomDernierUtilisateur']) && !empty($_SESSION['prenomDernierUtilisateur'])) {
+                echo $_SESSION['prenomDernierUtilisateur'];
+            }else {
+                echo '';
+            }
+            ?>
+        </div>
         <div class="score"></div>
         <div class="lifeCounter"></div>
         <div class="timming"></div>
@@ -20,7 +30,6 @@
         <img class="obstacle" src="../assets/img/obstacle.png" alt="obstacle">
     </main>
     <script src="../assets/js/script.game.js"></script> 
-    <div src="../pages/form.php"></div>
 </body>
 
 </htm>
