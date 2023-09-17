@@ -1,110 +1,127 @@
-const player = document.querySelector('.player');
-const obstacle = document.querySelector('.obstacle');
-const gameBoard = document.querySelector('.game-board');
-const btn = document.querySelector('.restart');
-const clounds = document.querySelector('.clounds');
-
-
+const player = document.querySelector(".player");
+const sad = document.querySelector(".sad");
+const obstacle = document.querySelector(".obstacle");
+const gameBoard = document.querySelector(".game-board");
+const clounds = document.querySelector(".clounds");
+const btnRestart = document.querySelector(".restart");
+const score = document.querySelector(".score");
+const lifeCounter = document.querySelector(".lifeCounter");
+const timming = document.querySelector(".timming");
 
 const jump = () => {
+  player.classList.add("jump");
 
-    player.classList.add('jump');
-
-    setTimeout(() => {
-        player.classList.remove('jump');
-    }, 500);
-}
-
-let life = 2;
-btn.addEventListener('click', () => {
-    start();
-})
+  setTimeout(() => {
+    player.classList.remove("jump");
+  }, 500);
+};
 
 const endGame = () => {
-    clounds.classList.add("hidden");
-    player.classList.add("hidden");
+  gameBoard.classList.add("gameOver");
+  clounds.classList.add("hidden");
+  player.classList.add("hidden");
+  obstacle.classList.add("hidden");
+  score.classList.add("hidden");
+  lifeCounter.classList.add("hidden");
+  gameBoard.style.border = "0";
+  score;
+
+  setTimeout(() => {
+    window.location = "http://rugby/pages/form.php";
+  }, 5000);
+};
+
+btnRestart.addEventListener("click", () => {
+  setTimeout(() => {
+    start();
+  }, 2000);
+});
+
+let life = 2;
+
+function decreaseLife() {
+  life--;
+  updateLife();
+}
+
+function updateLife() {
+  lifeCounter.innerHTML = `Life: ${life}`;
+}
+
+function countdown(time) {
+  if (time >= 0) {
+    lifeCounter.classList.add("hidden");
+    score.classList.add("hidden");
     obstacle.classList.add("hidden");
-    gameBoard.style.border='0';    
-    gameBoard.classList.add('gameOver');
 
     setTimeout(() => {
-        window.location = "http://rugby/pages/form.php";
-    }, 3000);
+      timming.textContent = time;
+      countdown(time - 1);
+    }, 1000);
+  } else {
+    setTimeout(() => {
+      timming.textContent = "GO!";
+      start();
+    }, 1000);
+  }
 }
 
+countdown(3);
+let currentScore = 0; // Score actuel
+let maxScore = 0;     // Score maximal atteint
 
-function startCountdown() {
-    const countdownElement = document.getElementById("countdown");
-    let countdown = 3; // Compte à rebours de 3 secondes
+function start() {
+  if (life === 2) {
+    // Réinitialisez le score actuel uniquement lorsque le jeu commence
+    currentScore = 0;
+  }
+  updateLife(); // Mettez à jour le compteur de vies
+  document.addEventListener("keydown", jump);
+  player.classList.remove("style.botton");
+  player.src = "../assets/img/player.gif";
+  btnRestart.classList.add("hidden");
+  score.classList.add("score");
+  player.style.bottom = "";
 
-    const countdownInterval = setInterval(() => {
-        if (countdown === 0) {
-            countdownElement.textContent = "GO!";
-            clearInterval(countdownInterval); // Arrête le compte à rebours
-
-            // Déclenche le jeu après "GO!"
-            setTimeout(() => {
-                countdownElement.textContent = ""; // Efface le texte
-                startGame();
-            }, 1000); // Attendez 1 seconde après "GO!" avant de commencer le jeu
-        } else {
-            countdownElement.textContent = countdown.toString();
-            countdown--;
-        }
-    }, 1000); // Met à jour le compteur toutes les 1000 millisecondes (1 seconde)
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    startCountdown(); // Commence le compte à rebours dès que la page est chargée
-});
-
-btn.addEventListener('click', () => {
-    startCountdown(); // Au lieu de startGame()
-});
-
-
-
-
-function startGame() {
-
-    document.addEventListener('keydown', jump);
-
-    obstacle.classList.remove("obstacle");
-    obstacle.classList.add("obstacle");
+  setTimeout(() => {
+    timming.classList.add("hidden");
+    lifeCounter.classList.remove("hidden");
+    score.classList.remove("hidden");
+  }, 1000);
+  setTimeout(() => {
     obstacle.classList.remove("hidden");
+  }, 2000);
 
-    player.src = "../assets/img/player.gif";
-    btn.classList.add("hidden");
+  const loop = setInterval(() => {
+    const obstaclePosition = obstacle.offsetLeft;
+    const playerPosition = +window.getComputedStyle(player).bottom.replace("px", "");
 
-    const loop = setInterval(() => {
-        const obstaclePosition = obstacle.offsetLeft;
-        const playerPosition = +window.getComputedStyle(player).bottom.replace('px', '');
-
-        if (obstaclePosition <= 50 && obstaclePosition > 0 && playerPosition < 137) {
-            life--;
-
-            setTimeout(() => {
-
-                obstacle.classList.add("hidden");
-            }, 500);
-
-            clearInterval(loop);
-            document.removeEventListener('keydown', jump);
-
-            //player.style.animation = 'none';
-            //player.style.bottom = `${playerPosition + 10}px`;
-            player.src = "../assets/img/sad.gif";
-
-            if (life <= 0) {
-                endGame();
-            } else {
-                btn.classList.remove("hidden");
-            }
+    if (obstaclePosition <= 90 && obstaclePosition > 0 && playerPosition < 150) {
+      decreaseLife();
+      setTimeout(() => {
+        obstacle.classList.add("hidden");
+      }, 100);
+      clearInterval(loop);
+      document.removeEventListener("keydown", jump);
+      player.src = "../assets/img/sad.gif";
+      player.style.bottom = "1px";
+      if (life <= 0) {
+        // Lorsque le joueur n'a plus de vies, affiche le score maximal et termine le jeu
+        if (currentScore > maxScore) {
+          maxScore = currentScore; // Mettez à jour le score maximal
         }
-    }, 10);
+        score.innerHTML = `Score maximal: ${maxScore}`;
+        setTimeout(() => {
+          endGame();
+        }, 3000);
+      } else {
+        // Lorsque le joueur a encore des vies, montrez le bouton de redémarrage
+        btnRestart.classList.remove("hidden");
+      }
+    } else {
+      // Mettez à jour le score actuel uniquement si le joueur n'a pas perdu
+      score.innerHTML = `Score: ${currentScore}`;
+      currentScore++; // Mettez à jour le score actuel
+    }
+  }, 10);
 }
-
-
-
-
-
