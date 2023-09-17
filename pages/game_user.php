@@ -10,25 +10,22 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.game.css">
-    <link rel="stylesheet" href="../assets/css/game_user.css">
-    <style>
-    
-    </style>
+
     <title>Game Adver-Chanllege</title>
 </head>
 
 <body>
-<main class="game-board">
-        <div class="name_user">
-                    <p>
-                        Player Name : 
-                    </p>
-                    <p>
-                        <?php echo  $_SESSION['prenomDernierUtilisateur']?>
-                    </p>
-                </div>
-          
+    <main class="game-board">
+        <div class="nameUser hidden">
+            <p>
+                Player Name : 
+            </p>
+            <p>
+                <?php echo $_SESSION['prenomDernierUtilisateur']?>
+            </p>
 
+         
+        </div>
         <div class="score"></div>
         <div class="lifeCounter"></div>
         <div class="timming"></div>
@@ -37,10 +34,8 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
         <img class="player" src="../assets/img/player.gif" alt="player">
         <img class="obstacle" src="../assets/img/obstacle.png" alt="obstacle">
     </main>
-    <script src="../assets/js/script.home.js"></script> 
-    <div src="../pages/form.php"></div>
- 
- 
+    <script src="../assets/js/script_user.js"></script> 
+   
 </body>
 
-</html>
+</htm>

@@ -22,7 +22,7 @@
         <img class="obstacle" src="../assets/img/obstacle.png" alt="obstacle">
     </main>
     <script src="../assets/js/script.home.js"></script> 
-    <div src="../pages/form.php"></div>
+
 </body>
 
 </htm>

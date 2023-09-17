@@ -25,12 +25,12 @@ const endGame = () => {
   obstacle.classList.add("hidden");
   score.classList.add("hidden");
   lifeCounter.classList.add("hidden");
-
+  nameUserDiv.classList.add("hidden");
   gameBoard.style.border = "0";
   score;
 
   setTimeout(() => {
-    window.location = "http://rugby/pages/form.php";
+    window.location = "http://rugby/pages/menu.php";
   }, 3000);
 };
 
