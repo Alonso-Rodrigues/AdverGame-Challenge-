@@ -18,22 +18,28 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
 </head>
 
 <body>
-   
+<main class="game-board">
+        <div class="name_user">
+                    <p>
+                        Player Name : 
+                    </p>
+                    <p>
+                        <?php echo  $_SESSION['prenomDernierUtilisateur']?>
+                    </p>
+                </div>
+          
 
-    <div class="game-board">
-        <div>
-            <p class="title">
-                Player Name : 
-            </p>
-            <span class="player_name"><?php echo $_SESSION['prenomDernierUtilisateur']; ?></span>
-        </div>
-       
-        <button class="restart hidden">Rafraîchir</button>
+        <div class="score"></div>
+        <div class="lifeCounter"></div>
+        <div class="timming"></div>
+        <button class="restart hidden">Rejouer</button>
         <img class="clounds" src="../assets/img/clouds.png" alt="clounds">
         <img class="player" src="../assets/img/player.gif" alt="player">
         <img class="obstacle" src="../assets/img/obstacle.png" alt="obstacle">
-    </div>
-    <script src="../assets/js/script.home.js"></script>
+    </main>
+    <script src="../assets/js/script.home.js"></script> 
+    <div src="../pages/form.php"></div>
+ 
  
 </body>
 

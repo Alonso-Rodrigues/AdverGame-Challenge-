@@ -8,6 +8,7 @@ const score = document.querySelector(".score");
 const lifeCounter = document.querySelector(".lifeCounter");
 const timming = document.querySelector(".timming");
 
+
 const jump = () => {
   player.classList.add("jump");
 
@@ -82,6 +83,7 @@ function start() {
   btnRestart.classList.add("hidden");
   score.classList.add("score");
   player.style.bottom = "";
+
 
   setTimeout(() => {
     timming.classList.add("hidden");
