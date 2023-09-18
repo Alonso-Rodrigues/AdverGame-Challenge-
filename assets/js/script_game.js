@@ -31,10 +31,10 @@ const endGame = () => {
   player.classList.add("hidden");
   obstacle.classList.add("hidden");
   score.classList.add("hidden");
-  lifeCounter.classList.add("hidden");
+  // lifeCounter.classList.add("hidden");
   gameBoard.style.border = "0";
   score;
-  jumpButton.style.display = "none";
+  jumpButton.classList.add("hidden");
   setTimeout(() => {
     window.location = "http://advergame/pages/form.php";
   }, 3000);
@@ -85,7 +85,7 @@ function countdown(time) {
     }, 1000);
   }
 }
-countdown(3);
+countdown(0);
 
 
 let currentScore = 0; // Score actuel
