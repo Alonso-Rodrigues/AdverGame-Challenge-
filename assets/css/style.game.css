@@ -154,26 +154,6 @@ body {
     margin: 50px;
 }
 
-.nameUser {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    min-height: 50px;
-    min-width: 100px;
-    top: 50px;
-    left: -10px;
-    background: white;
-    border: black solid 0.5px;
-    border-radius: 10px;
-    color: rgb(0, 0, 0);
-    font-family: sans-serif;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 50px;
-    z-index: 999;
-}
 
 .nameUser {
     position: absolute;
@@ -182,7 +162,6 @@ body {
     align-items: center;
     min-height: 50px;
     min-width: 250px;
-    padding: 10px;
     top: 50px;
     left: -10px;
     background: white;
@@ -317,6 +296,15 @@ body {
         left: 100px;
         z-index: 999;
     }
+
+    .nameUser {
+        position: absolute;
+        min-height: 5px;
+        top: -5px;
+        left: -40px;
+        z-index: 999;
+    }
+
 
     .restart {
         position: absolute;
