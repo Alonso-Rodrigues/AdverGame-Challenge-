@@ -1,9 +1,14 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
 
+
+
+
+if (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'game.php') !== false) {
+    $_SESSION['game_redirected'] = true;
+}
+
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,7 +66,6 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
             <div class="container">
 
                 <form method="post" action="">
-                    <label>Veuillez remplisez le formulaire pour jouer à nouveau.</label>
                     <label for="nom">Nom</label>
                     <input type="text" name="nom" required>
                     <label for="prenom">Prénom</label>
