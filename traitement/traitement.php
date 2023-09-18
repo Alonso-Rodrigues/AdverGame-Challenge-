@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ])) 
         {
             $_SESSION['success'] = "Félicitations pour votre inscription"; // Message de succès
+          
 
             // Récupérer l'ID de l'utilisateur inscrit
             $lastInsertedID = $db->lastInsertId();
@@ -32,12 +33,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $selectStmt = $db->prepare("SELECT prenom FROM user WHERE id_user = :id");
             $selectStmt->execute([':id' => $lastInsertedID]);
             $row = $selectStmt->fetch();
+            
            
 
             // Afficher le prénom de l'utilisateur inscrit
             // if ($row) {
             //     $prenomDernierUtilisateur = $row['prenom'];
             $_SESSION['prenomDernierUtilisateur'] = $row['prenom'];
+            $_SESSION['auth'] = true;
             
             // }
         } else {
@@ -45,5 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 }
+
 
 ?>

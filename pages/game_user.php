@@ -1,6 +1,9 @@
 <?php
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "../protection/protection.php";
+
+
 ?>
 
 <!DOCTYPE html>
