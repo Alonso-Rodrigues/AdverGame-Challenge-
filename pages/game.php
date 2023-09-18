@@ -10,11 +10,8 @@
 
 <body>
     <main class="game-board">
-
         <div class="score"></div>
-
         <div class="lifeCounter"></div>
-
         <div class="timming"></div>
         <button class="restart hidden">Rejouer</button>
         <img class="clounds" src="../assets/img/clouds.png" alt="clounds">

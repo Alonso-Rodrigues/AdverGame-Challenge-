@@ -23,8 +23,6 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
             <p>
                 <?php echo $_SESSION['prenomDernierUtilisateur']?>
             </p>
-
-
         </div>
         <div class="score"></div>
         <div class="lifeCounter"></div>
