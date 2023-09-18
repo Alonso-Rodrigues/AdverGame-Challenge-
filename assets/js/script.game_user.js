@@ -30,7 +30,7 @@ const endGame = () => {
   score;
 
   setTimeout(() => {
-    window.location = "http://advergame/pages/menu.php";
+    window.location = "http://rugby/pages/menu.php";
   }, 3000);
 };
 
