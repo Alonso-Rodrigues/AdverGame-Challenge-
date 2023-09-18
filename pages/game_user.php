@@ -1,7 +1,8 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
 
+require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,6 +23,8 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
             <p>
                 <?php echo $_SESSION['prenomDernierUtilisateur']?>
             </p>
+
+
         </div>
         <div class="score"></div>
         <div class="lifeCounter"></div>
