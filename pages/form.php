@@ -66,6 +66,7 @@ if (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'game.ph
             <div class="container">
 
                 <form method="post" action="">
+                    <label>Veuillez remplisez le formulaire pour jouer à nouveau.</label>
                     <label for="nom">Nom</label>
                     <input type="text" name="nom" required>
                     <label for="prenom">Prénom</label>
