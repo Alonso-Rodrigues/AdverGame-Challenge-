@@ -41,7 +41,7 @@ if (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'game.ph
                 <?php
                 // Vérifiez si l'utilisateur est connecté (c'est-à-dire si $_SESSION['success'] est défini)
                 if (isset($_SESSION['success']) && !empty($_SESSION['success'])) {
-                    echo '<li><a href="game_user.php">Rejouer</a></li>';
+                    echo '<li><a href="script_game_user.php">Rejouer</a></li>';
                 } else {
                     echo '<li><a href="#" id="rejouer-link">Rejouer</a></li>';
                     echo '<h1 id="message" style="display: none;">Veuillez remplisez le formulaire pour jouer à nouveau.</h1>';

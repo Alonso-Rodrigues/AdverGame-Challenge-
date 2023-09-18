@@ -77,6 +77,7 @@ function countdown(time) {
             lifeCounter.classList.remove("hidden");
             score.classList.remove("hidden");
             obstacle.classList.remove("hidden");
+            nameUserDiv.classList.remove("hidden");
         }, 1000);
     }
 }
