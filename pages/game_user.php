@@ -32,7 +32,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
         <img class="player" src="../assets/img/player.gif" alt="player">
         <img class="obstacle" src="../assets/img/obstacle.png" alt="obstacle">
     </main>
-    <script src="../assets/js/script_user.js"></script>
+    <script src="../assets/js/script_game_user.js"></script>
 
 </body>
 

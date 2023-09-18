@@ -18,7 +18,7 @@
         <img class="player" src="../assets/img/player.gif" alt="player">
         <img class="obstacle" src="../assets/img/obstacle.png" alt="obstacle">
     </main>
-    <script src="../assets/js/script.home.js"></script>
+    <script src="../assets/js/script_game.js"></script>
 
 </body>
 
