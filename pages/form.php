@@ -1,6 +1,9 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,6 +40,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
                 } else {
                     echo '<li><a href="#" id="rejouer-link">Rejouer</a></li>';
                     echo '<h1 id="message" style="display: none;">Veuillez remplisez le formulaire pour jouer à nouveau.</h1>';
+
                 }
             ?>
             </ul>
