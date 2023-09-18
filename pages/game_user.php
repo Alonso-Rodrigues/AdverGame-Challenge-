@@ -18,7 +18,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
     <main class="game-board">
         <div class="nameUser hidden">
             <p class="label">
-                Player Name :
+                Player Name:
             </p>
             <p>
                 <?php echo $_SESSION['prenomDernierUtilisateur']?>
