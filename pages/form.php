@@ -61,6 +61,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
             <div class="container">
 
                 <form method="post" action="">
+                    <label>Veuillez remplisez le formulaire pour jouer à nouveau.</label>
                     <label for="nom">Nom</label>
                     <input type="text" name="nom" required>
                     <label for="prenom">Prénom</label>

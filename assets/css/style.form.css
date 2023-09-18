@@ -24,7 +24,7 @@ header {
     width: 100%;
 }
 
-.message_email{
+.message_email {
     font-size: 20px;
     color: white;
     transition: 0.5s ease-out;
@@ -162,17 +162,24 @@ h3 {
     margin-top: 10px;
 }
 
+form label:nth-child(1) {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
 form label {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    color: #f6f6f6;
-    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.9);
+    color: #000000;
+    text-shadow: 0px 0px 20px rgba(118, 17, 169, 0.9);
     font-size: large;
     font-weight: 700;
-    margin-bottom: -20px;
+    margin-bottom: -50px;
 }
 
 form input {
@@ -188,8 +195,8 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 10%;
-    min-width: 20%;
+    min-height: 8%;
+    min-width: 16%;
     background-color: rgba(31, 86, 38, 0.6);
     border: 0.5mm ridge white;
     border-radius: 5px;
@@ -204,7 +211,7 @@ button:hover {
     border: 0.5mm ridge rgb(0, 0, 0);
     font-size: large;
     font-weight: 600;
-    width: 21%;
+    width: 17%;
     color: black;
     box-shadow: 0px 0px 15px 0px rgb(255, 255, 255);
     cursor: pointer;
