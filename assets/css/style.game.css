@@ -216,7 +216,6 @@ body {
 .jump-button {
     position: fixed;
     display: flex;
-    /* flex-direction: column; */
     align-items: center;
     justify-content: center;
     height: 55px;
@@ -305,17 +304,35 @@ body {
 
     .lifeCounter {
         min-height: 5px;
+        top: -40px;
+        left: -40px;
+        z-index: 999;
 
     }
 
     .score {
+        position: absolute;
         min-height: 5px;
+        top: -40px;
+        left: 100px;
         z-index: 999;
     }
 
     .restart {
-        height: 40px;
+        position: absolute;
+        height: 30px;
+        top: 10px;
+        left: 410px;
+        font-size: 1rem;
         z-index: 999;
+    }
+
+    .restart:hover {
+        height: 30px;
+        top: 10px;
+        left: 410px;
+        font-size: 1rem;
+        font-weight: 600;
     }
 
     .jump-button {

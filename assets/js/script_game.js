@@ -85,7 +85,7 @@ function countdown(time) {
     }, 1000);
   }
 }
-countdown(0);
+countdown(3);
 
 
 let currentScore = 0; // Score actuel
