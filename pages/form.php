@@ -1,6 +1,13 @@
-
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
+
+
+
+
+if (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], 'game.php') !== false) {
+    $_SESSION['game_redirected'] = true;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

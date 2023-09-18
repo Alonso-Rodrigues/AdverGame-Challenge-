@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+// Si la variable de session game_redirected est définie, redirigez l'utilisateur vers une autre page
+if (isset($_SESSION['game_redirected']) && $_SESSION['game_redirected'] === true) {
+    header('Location: form.php'); // Remplacez some_other_page.php par la page de redirection souhaitée
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,4 +34,4 @@
 
 </body>
 
-</htm>
+</html>
