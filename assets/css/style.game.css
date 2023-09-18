@@ -205,7 +205,7 @@ body {
     white-space: nowrap;
 }
 
-.labe {
+.label {
     margin-right: 5px;
 }
 
@@ -213,6 +213,34 @@ body {
     display: none;
 }
 
+.jump-button {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 150px;
+    background: linear-gradient(rgba(148, 43, 226, 0.8), #ffffff);
+    border: transparent;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    bottom: 25px;
+    z-index: 7;
+    cursor:pointer;
+    /* display: none; */
+}
+
+.jump-button:hover {
+    color: rgb(210, 14, 80);
+    height: 45px;
+    width: 150px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
 /* ----------|KeyFrames|---------- */
 @keyframes obstacle {
     from {
@@ -254,5 +282,93 @@ body {
 
     to {
         right: 100%;
+    }
+}
+
+/* ----------|Responsive|----------- */
+@media screen and (min-width: 100px) and (max-width: 900px) {
+    .player {
+        width: 80px;
+        height: 80px;
+    }
+
+    .obstacle {
+        width: 90px;
+        height: 90px;
+    }
+
+    .clounds {
+        width: 150px;
+    }
+
+    .lifeCounter {
+        min-height: 5px;
+
+    }
+
+    .score {
+        min-height: 5px;
+    }
+
+    .restart {
+        height: 40px;
+    }
+}
+
+@media screen and (min-width: 901px) and (max-width: 1000px) {
+    .player {
+        width: 90px;
+        height: 90px;
+    }
+
+    .obstacle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .clounds {
+        width: 160px;
+    }
+
+    .lifeCounter {
+        min-height: 10px;
+
+    }
+
+    .score {
+        min-height: 10px;
+    }
+
+    .restart {
+        height: 50px;
+    }
+}
+
+@media screen and (min-width: 1001px) and (min-height: 100px) {
+    .player {
+        width: 100px;
+        height: 100px;
+    }
+
+    .obstacle {
+        width: 110px;
+        height: 110px;
+    }
+
+    .clounds {
+        width: 160px;
+    }
+
+    .lifeCounter {
+        min-height: 20px;
+
+    }
+
+    .score {
+        min-height: 20px;
+    }
+
+    .restart {
+        height: 50px;
     }
 }

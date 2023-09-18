@@ -8,7 +8,7 @@ const score = document.querySelector(".score");
 const lifeCounter = document.querySelector(".lifeCounter");
 const timming = document.querySelector(".timming");
 const nameUserDiv = document.querySelector(".nameUser");
-
+const jumpButton = document.getElementById('jump-button');
 
 const jump = () => {
   player.classList.add("jump");
@@ -18,6 +18,13 @@ const jump = () => {
   }, 500);
 };
 
+const btnJump = () => {
+  player.classList.add("jump")
+  setTimeout(() => {
+    player.classList.add("jump")
+  }, 500)
+}
+
 const endGame = () => {
   gameBoard.classList.add("gameOver");
   clounds.classList.add("hidden");
@@ -25,10 +32,9 @@ const endGame = () => {
   obstacle.classList.add("hidden");
   score.classList.add("hidden");
   lifeCounter.classList.add("hidden");
-
   gameBoard.style.border = "0";
   score;
-
+  jumpButton.style.display = "none";
   setTimeout(() => {
     window.location = "http://advergame/pages/form.php";
   }, 3000);
@@ -57,7 +63,6 @@ function countdown(time) {
     lifeCounter.classList.add("hidden");
     score.classList.add("hidden");
     obstacle.classList.add("hidden");
-
     setTimeout(() => {
       if (time === 0) {
         timming.textContent = "GO !"; // Affiche "GO" au lieu de 0
@@ -77,13 +82,12 @@ function countdown(time) {
       lifeCounter.classList.remove("hidden");
       score.classList.remove("hidden");
       obstacle.classList.remove("hidden");
-      nameUserDiv.classList.remove("hidden");
     }, 1000);
   }
 }
+countdown(0);
 
 
-countdown(3);
 let currentScore = 0; // Score actuel
 let maxScore = 0;     // Score maximal atteint
 

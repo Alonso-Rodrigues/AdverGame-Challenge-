@@ -77,24 +77,6 @@ a:hover {
 }
 
 /* ----------|Responsive|---------- */
-@media screen and (min-width: 320px) and (max-width: 768px) {
-    main {
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-        height: 100vh;
-        width: 100%;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    button{
-        margin-top: 200px;
-    }
-}
-
 @media screen and (min-width: 320px) and (max-width: 480px) {
     main {
         background-repeat: no-repeat;
