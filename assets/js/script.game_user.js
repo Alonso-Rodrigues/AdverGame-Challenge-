@@ -7,7 +7,9 @@ const btnRestart = document.querySelector(".restart");
 const score = document.querySelector(".score");
 const lifeCounter = document.querySelector(".lifeCounter");
 const timming = document.querySelector(".timming");
-const nameUser = document.querySelector(".nameUser");
+const nameUserDiv = document.querySelector(".nameUser");
+
+
 const jump = () => {
   player.classList.add("jump");
 
@@ -23,12 +25,13 @@ const endGame = () => {
   obstacle.classList.add("hidden");
   score.classList.add("hidden");
   lifeCounter.classList.add("hidden");
+  nameUserDiv.classList.add("hidden");
   gameBoard.style.border = "0";
   score;
- 
+
   setTimeout(() => {
-    window.location = "http://advergame/pages/form.php";
-  }, 5000);
+    window.location = "http://advergame/pages/menu.php";
+  }, 3000);
 };
 
 btnRestart.addEventListener("click", () => {
@@ -38,6 +41,7 @@ btnRestart.addEventListener("click", () => {
 });
 
 let life = 2;
+
 function decreaseLife() {
   life--;
   updateLife();
@@ -49,6 +53,7 @@ function updateLife() {
 
 function countdown(time) {
   if (time >= 0) {
+    // Ajoutez la classe "hidden" uniquement aux éléments du jeu, pas à "nameUser"
     lifeCounter.classList.add("hidden");
     score.classList.add("hidden");
     obstacle.classList.add("hidden");
@@ -65,11 +70,20 @@ function countdown(time) {
     setTimeout(() => {
       // Supprimez le texte ici
       timming.style.display = 'none';
+
       start();
+
+      // Retirez la classe "hidden" des éléments du jeu pour les afficher
+      lifeCounter.classList.remove("hidden");
+      score.classList.remove("hidden");
+      obstacle.classList.remove("hidden");
+      nameUserDiv.classList.remove("hidden");
     }, 1000);
   }
 }
-countdown(1);
+
+
+countdown(3);
 let currentScore = 0; // Score actuel
 let maxScore = 0;     // Score maximal atteint
 

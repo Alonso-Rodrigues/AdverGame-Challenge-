@@ -1,4 +1,3 @@
-
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
 ?>
@@ -10,41 +9,43 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.form.css">
     <style>
-        ul{
-            display:flex;
-            flex-direction:column;
-        }
-        #message{
-            color:white;
-        }
-        .success-message{
-            color:#599cc8;
-            font-size:25px;
-        }
+    ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #message {
+        color: white;
+    }
+
+    .success-message {
+        color: #599cc8;
+        font-size: 25px;
+    }
     </style>
     <title>Form Adver Game</title>
 </head>
 
 <body>
-<header>
-    <nav>
-        <ul>
-            <?php
+    <header>
+        <nav>
+            <ul>
+                <?php
                 // Vérifiez si l'utilisateur est connecté (c'est-à-dire si $_SESSION['success'] est défini)
                 if (isset($_SESSION['success']) && !empty($_SESSION['success'])) {
-                    echo '<li><a href="game.php">Rejouer</a></li>';
+                    echo '<li><a href="game_user.php">Rejouer</a></li>';
                 } else {
                     echo '<li><a href="#" id="rejouer-link">Rejouer</a></li>';
                     echo '<h1 id="message" style="display: none;">Veuillez remplisez le formulaire pour jouer à nouveau.</h1>';
                 }
             ?>
-        </ul>
-    </nav>
-</header>
+            </ul>
+        </nav>
+    </header>
     <main>
         <section>
 
-        <?php
+            <?php
             // Vérifiez si $_SESSION['success'] est défini et non vide
             if (isset($_SESSION['success']) && !empty($_SESSION['success'])) {
                 echo '<div class="success-message">' . $_SESSION['success'] . '</div>';
@@ -54,7 +55,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "../traitement/traitement.php";
 
 
             <div class="container">
-              
+
                 <form method="post" action="">
                     <label for="nom">Nom</label>
                     <input type="text" name="nom" required>
